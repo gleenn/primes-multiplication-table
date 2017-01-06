@@ -41,6 +41,15 @@
                                                  [46 69 115 161 253 299 391 437 529 667]
                                                  [58 87 145 203 319 377 493 551 667 841]]))
 
+(facts num-digits
+       (fact "returns the number of digits in decimal format"
+             (num-digits 1) => 1
+             (num-digits 9) => 1
+             (num-digits 10) => 2
+             (num-digits 99) => 2
+             (num-digits 100) => 3
+             (num-digits 999) => 3))
+
 (facts primes-table->string
        (fact "returns a string formatted as a table"
              (primes-table->string (prime-multiplication-table 1)) => "4"
