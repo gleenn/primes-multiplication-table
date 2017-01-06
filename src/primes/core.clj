@@ -4,3 +4,6 @@
   (if (= n 1)
     false
     (nil? (some #(= 0 (mod n %)) (range 2 (int (inc (Math/sqrt n))))))))
+
+(defn n-primes [n]
+  (take n (filter is-prime? (iterate inc 1))))

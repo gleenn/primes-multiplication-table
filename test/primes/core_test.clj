@@ -2,8 +2,8 @@
   (:require [midje.sweet :refer :all]
             [primes.core :refer :all]))
 
-(facts "primes"
-       (fact "is-prime?"
+(facts is-prime?
+       (fact "returns true when the input is prime and false otherwise"
              (is-prime? 1) => falsey
              (is-prime? 2) => truthy
              (is-prime? 3) => truthy
@@ -15,3 +15,9 @@
              (is-prime? 9) => falsey
              (is-prime? 10) => falsey
              (is-prime? 100) => falsey))
+
+(facts n-primes
+       (fact "returns n number of primes"
+             (n-primes 1) => [2]
+             (n-primes 2) => [2 3]
+             (n-primes 10) => [2 3 5 7 11 13 17 19 23 29]))
