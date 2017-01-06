@@ -54,5 +54,4 @@
        (fact "returns a string formatted as a table"
              (primes-table->string (prime-multiplication-table 1)) => "4"
              (primes-table->string (prime-multiplication-table 2)) => "4 6\n6 9"
-             (primes-table->string (prime-multiplication-table 3)) => " 4  6 10\n 6  9 15\n10 15 25"
-             ))
+             (primes-table->string (prime-multiplication-table 3)) => " 4  6 10\n 6  9 15\n10 15 25"))
