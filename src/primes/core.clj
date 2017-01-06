@@ -27,4 +27,4 @@
      ))
 
 (defn -main [& args]
-  (println (primes-table->string (prime-multiplication-table 10))))
+  (println (primes-table->string (prime-multiplication-table (Integer/parseInt (or (first args) "10"))))))
