@@ -1,22 +1,23 @@
 (ns primes.core
   (:require [clojure.string :as s]
             [primes.sieve :as sieve]))
+(set! *warn-on-reflection* true)
 
-(defn is-prime? [n]
+(defn is-prime? [^Long n]
   (if (= n 1)
     false
     (nil? (some #(= 0 (mod n %)) (range 2 (inc (int (Math/sqrt n))))))))
 
-(defn n-primes [n]
+(defn n-primes [^Long n]
   (take n (filter is-prime? (iterate inc 1))))
 
-(defn prime-multiplication-table [n]
-  (let [primes (sieve/n-primes-with-sieve n)]
+(defn prime-multiplication-table [^Long n]
+  (let [primes (n-primes n)]
     (for [y primes]
       (for [x primes]
         (* x y)))))
 
-(defn num-digits [num]
+(defn num-digits [^Long num]
   (int (inc (Math/log10 num))))
 
 (defn primes-table->string [table]

@@ -1,6 +1,7 @@
 (ns primes.sieve)
+(set! *warn-on-reflection* true)
 
-(defn sieve [n]
+(defn sieve [^Long n]
   (let [array (boolean-array n true)]
     (do
       (aset array 0 false)
@@ -9,14 +10,14 @@
         (aset array (dec i) false))
       (vec array))))
 
-(defn is-prime-with-sieve? [sieve n]
+(defn is-prime-with-sieve? [sieve ^Long n]
   (get sieve (dec n)))
 
-(defn primes-up-to-with-sieve [check-up-to]
+(defn primes-up-to-with-sieve [^Long check-up-to]
   (remove nil?
           (map-indexed #(if %2 (inc %1)) (sieve check-up-to))))
 
-(defn n-primes-with-sieve [n]
+(defn n-primes-with-sieve [^Long n]
   (loop [primes-up-to n]
     (let [primes (primes-up-to-with-sieve primes-up-to)]
       (if (> (count primes) n)
