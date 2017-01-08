@@ -55,26 +55,3 @@
              (primes-table->string (prime-multiplication-table 1)) => "4"
              (primes-table->string (prime-multiplication-table 2)) => "4 6\n6 9"
              (primes-table->string (prime-multiplication-table 3)) => " 4  6 10\n 6  9 15\n10 15 25"))
-
-(facts sieve
-       (fact "returns a vector of booleans - true if prime and false otherwise"
-             (sieve 2) => [false true]
-             (sieve 3) => [false true true]
-             (sieve 4) => [false true true false]
-             (sieve 5) => [false true true false true]
-             (sieve 6) => [false true true false true false]
-             (sieve 10) => [false true true false true false true false false false]
-             (sieve 20) => [false true  true false true  false true false false false
-                            true  false true false false false true false true false]))
-
-(facts fast-is-prime?
-       (fact "returns true if n is prime using sieve"
-             (fast-is-prime? (sieve 10) 2) => true
-             (fast-is-prime? (sieve 10) 4) => false))
-
-(facts fast-n-primes
-       (fact "returns primes up to n"
-             (fast-n-primes 2) => [2]
-             (fast-n-primes 3) => [2 3]
-             (fast-n-primes 5) => [2 3 5]
-             (fast-n-primes 29) => [2 3 5 7 11 13 17 19 23 29]))

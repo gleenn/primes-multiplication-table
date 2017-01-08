@@ -1,21 +1,6 @@
 (ns primes.core
-  (:require [clojure.string :as s]))
-
-(defn sieve [n]
-  (let [array (boolean-array n true)]
-    (do
-      (aset array 0 false)
-      (doseq [divisor (range 2 (inc (Math/sqrt n)))
-              i (range (+ divisor divisor) (inc n) divisor)]
-        (aset array (dec i) false))
-      (vec array))))
-
-(defn fast-is-prime? [sieve n]
-  (get sieve (dec n)))
-
-(defn fast-n-primes [n]
-  (remove nil?
-          (map-indexed #(if %2 (inc %1)) (sieve n))))
+  (:require [clojure.string :as s]
+            [primes.sieve :as sieve]))
 
 (defn is-prime? [n]
   (if (= n 1)
@@ -26,7 +11,7 @@
   (take n (filter is-prime? (iterate inc 1))))
 
 (defn prime-multiplication-table [n]
-  (let [primes (n-primes n)]
+  (let [primes (sieve/n-primes-with-sieve n)]
     (for [y primes]
       (for [x primes]
         (* x y)))))
